@@ -1,0 +1,200 @@
+/* 
+* Amazium V3.1
+* Copyright 2013, Mike Ballan
+* www.amazium.co.uk
+*/
+
+
+/***** Reset & Basics *****/
+
+html, body, div, span, applet,
+object, iframe, h1, h2, h3, h4,
+h5, h6, p, blockquote, pre, a,
+abbr, acronym, address, big, cite,
+code, del, dfn, em, img, ins, kbd,
+q, s, samp, small, strike, strong,
+sub, sup, tt, var, b, u, i, center,
+dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend, table, caption,
+tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details,
+embed, figure, figcaption, footer,
+header, hgroup, menu, nav, output,
+ruby, section, summary, time, mark,
+audio, video                                    { margin: 0; padding: 0; border: 0; font-size:100%; font:inherit; vertical-align:baseline; }
+
+article, aside, details, figcaption, 
+figure, footer, header, hgroup, menu, 
+nav, section                                    { display:block; }
+
+body                                            { line-height:1; }
+
+ol, ul                                          { list-style:none; }
+
+blockquote, q                                   { quotes:none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after                               { content:''; content:none; }
+
+table                                           { border-collapse:collapse; border-spacing:0; }
+    
+/***** Basic Styles *****/
+
+html                                            { overflow-y:scroll; overflow:-moz-scrollbars-vertical; }
+body                                            { margin:0; padding:0; background-color:#fff; font:15px/20px Sans-Serif; color:#333; -webkit-font-smoothing:antialiased; -webkit-text-size-adjust:none; }
+
+/***** Typography *****/
+
+h1, h2, h3, h4, h5, h6                          { margin:0; padding:0; font-family:Sans-Serif; font-weight:normal; } 
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a              { font-weight:inherit; color:inherit; }
+h1                                              { margin:0 0 10px 0; padding:0; font-size:38px; line-height:40px; color:#333; }
+h2                                              { margin:0 0 10px 0; padding:0; font-size:32px; line-height:34px; color:#333; }
+h3                                              { margin:0 0 10px 0; padding:0; font-size:24px; line-height:26px; color:#333; }
+h4                                              { margin:0 0 10px 0; padding:0; font-size:17px; line-height:19px; color:#333; }
+h5                                              { margin:0 0 10px 0; padding:0; font-size:14px; line-height:16px; color:#333; }
+h6                                              { margin:0 0 10px 0; padding:0; font-size:11px; line-height:13px; color:#333; }
+
+p                                               { margin:0 0 20px 0; padding:0; line-height:26px; }
+
+b, strong                                       { font-weight:bold; }
+em                                              { font-style:italic; }
+small                                           { font-size:11px; }
+
+sup, sub                                        { height:0; line-height:0; vertical-align:baseline; _vertical-align:bottom; position:relative; font-size:80%; }
+sup                                             { top:-5px; }
+sub                                             { bottom:-5px; }
+
+pre code                                        { margin:16px 0 26px 0; padding:16px; font:12px/19px 'monospace', Sans-Serif; color:#f1f1f1; display:block; background-color:#111; border:1px solid #111; }
+
+abbr[title], 
+abbr[data-original-title]                       { border-bottom:1px dotted #999999; cursor:help; }
+address                                         { margin:26px 0; padding:0; display:block; font-style:normal; line-height:20px; }    
+
+hr                                              { margin:20px 0; padding:0; border:0; border-top:1px solid #999; height:1px; width:100%; text-align:left; display:block; }
+
+div                                             { box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; }
+
+/***** Lists *****/
+
+ul, ol                                          { margin:26px 0 36px 0; display:block; }
+ul                                              { list-style:none outside; }
+ul li                                           { margin:0 0 15px 0; padding:0 0 0 18px; line-height:18px; background:transparent url('../img/bullet.png') no-repeat 0 3px; }
+
+ul ul, ul ol                                    { margin:11px 0 5px 0; }
+ol ol, ol ul                                    { margin:8px 0 5px 20px; }
+ul ul li                                        { margin:0 0 5px 0; }
+ul ol li,   ol ol li, ol ul li                  { margin:0 0 3px 0; }
+
+ul.square, ul.square ul, 
+ul.circle ul.square                             { list-style:square outside; }
+ul.circle, ul.circle ul, 
+ul.square ul.circle                             { list-style:circle outside; }
+ul.disc, ul.disc ul                             { list-style:disc outside; }
+ul.square li,
+ul.circle li,
+ul.disc li                                      { margin:0 0 5px 18px; padding:0; line-height:18px; background:none; }
+
+ol                                              { list-style:decimal; }
+ol li                                           { margin:0 0 10px 22px; padding:0; line-height:18px; }
+
+dl                                              { margin:16px 0 26px 0; padding:0; }
+dt                                              { margin:0 0 10px 0; font-size:18px; line-height:20px; font-weight:bold; }
+dd                                              { margin:0 0 10px 10px; }
+
+/***** Blockquotes *****/
+
+figure                                          { margin:16px 0 26px 0; padding:0; }
+blockquote                                      { margin:0; padding:0 0 0 10px; border-left:1px solid #747474; }
+blockquote p                                    { margin:0; padding:0; color:#777; font-style:italic; }
+blockquote p:before                             { content:"\201C"; }
+blockquote p:after                              { content:"\201D"; }
+figcaption:before                               { content:"\2014 \202F"; }
+figcaption                                      { margin:6px 0 0 0; padding:0; font-size:11px; }
+
+/***** Links *****/
+
+a:link                                          { color:#000; text-decoration:underline; outline:0; transition:all .1s linear 0s; -moz-transition:all .1s linear 0s; -webkit-transition:all .1s linear 0s; -o-transition:all .1s linear 0s; }
+a:visited                                       { color:#000; text-decoration:underline; outline:0; }
+a:active                                        { color:#000; text-decoration:underline; outline:0; }
+a:hover                                         { color:#999; text-decoration:underline; outline:0; }
+a:focus                                         { outline:none; -moz-outline-style:none; }
+
+/***** Images, iFrames & Videos  *****/
+
+img                                             { border:0; vertical-align:middle; -ms-interpolation-mode:bicubic; }
+.max-img                                        { width:100%; height:auto; }        
+.media                                          { position:relative; margin:0 0 15px 0; padding-bottom:51%; padding-top:30px; height:0; overflow:hidden; border:1px solid #ccc; }
+.media iframe,
+.media object,  
+.media embed                                    { position:absolute; top:0; left:0; width:100%; height:100%; }
+
+/***** Buttons  *****/
+
+a.btn, 
+.btn,
+button                                          { margin:5px; padding:1px 20px 0; display:inline-block; color:#FFF; border:1px solid #000; background-color:#000; font-size:16px; line-height:40px; text-decoration:none; cursor:pointer; transition:all .1s linear 0s; -moz-transition:all .1s linear 0s; -webkit-transition:all .1s linear 0s; -o-transition:all .1s linear 0s; }
+:hover.btn                                      { border:1px solid #CCC; background-color:#FFF; color:#333; }
+
+a.btn.small, 
+.btn.small                                      { padding:2px 10px; font-size:12px; line-height:25px; }
+
+.btn.white                                      { border-color:#CCC; background-color:#FFF; color:#333; }
+:hover.btn.white                                { border-color:#000; background-color:#000; color:#FFF; }           
+
+.btn.red                                        { border-color:#E74C3C; background-color:#E74C3C; }
+:hover.btn.red                                  { border-color:#E74C3C; background-color:#b93d30; color:#FFF; }
+
+.btn.blue                                       { border-color:#3498DB; background-color:#3498DB; }
+:hover.btn.blue                                 { border-color:#3498DB; background-color:#2a7aaf; color:#FFF; }
+
+.btn.green                                      { border-color:#2ECC71; background-color:#2ECC71; }
+:hover.btn.green                                { border-color:#2ECC71; background-color:#25a35a; color:#FFF; }
+
+/***** Tables *****/
+
+table                                           { margin:20px 0 40px 0; width:100%; }
+table caption                                   { margin:0 0 10px; }
+table th                                        { padding:10px 8px 10px 8px; background-color:#f1f1f1; color:#333; font-weight:bold; border:1px solid #BBB; }
+table td                                        { padding:10px 8px 10px 8px; background-color:#f1f1f1; color:#333; border:1px solid #BBB; }
+table tr.even td                                { background-color:#fff; }
+table tr.odd td                                 { background-color:#f1f1f1; }
+table td.highlight,
+table tr td.highlight                           { padding:11px 8px; color:#FFF; font-weight:bold; display:block; font-size:inherit; border:none; background-color:#333; }
+    
+/***** Global Classes *****/
+
+.img-left                                       { float:left; margin:0 30px 30px 0; border:none; }
+.img-right                                      { float:right; margin:0 0 30px 30px; border:none; }
+    
+.clear                                          { clear:both; }
+.float-left                                     { float:left; }
+.float-right                                    { float:right; }
+
+.txt-big                                        { color:#a2bd30; font-weight:bold; line-height:26px; }
+.txt-left                                       { text-align:left; }
+.txt-right                                      { text-align:right; }
+.txt-center                                     { text-align:center; }
+.txt-justify                                    { text-align:justify; }
+
+.normal                                         { font-weight:normal; }
+.bold                                           { font-weight:bold; }
+.italic                                         { font-style:italic; }
+.underline                                      { border-bottom:1px solid; }
+.highlight                                      { padding:4px 7px 4px; color:#000; line-height:19px; display:inline-block; background:#00deff; font-weight:bold; }
+.intro                                          { font-size:130%; line-height:130%; }
+
+.nopadding                                      { padding:0; }
+.noindent                                       { margin-left:0; padding-left:0; }
+.nobullet                                       { list-style:none; list-style-image:none; }
+
+.inline                                         { display:inline; }
+.block                                          { display:block; }
+.hidden                                         { display:none; }
+.hide                                           { display:none; }
+.bfix                                           { box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; }
+
+/***** Back to Top *****/
+
+#toTop                                          { display:none; text-decoration:none; position:fixed; bottom:10px; right:10px; overflow:hidden; width:51px; height:51px; border:none; text-indent:-999px; background:url(../img/ui.totop.png) no-repeat left top; z-index:99; }
+#toTopHover                                     { background:url(../img/ui.totop.png) no-repeat left -51px; width:51px; height:51px; display:block; overflow:hidden; float:left; opacity: 0; -moz-opacity: 0; filter:alpha(opacity=0); }
+#toTop:active, #toTop:focus                     { outline:none; }

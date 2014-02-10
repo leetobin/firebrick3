@@ -1,0 +1,6 @@
+[submodule "buildroot"]
+	path = buildroot
+	url = git://git.buildroot.net/buildroot
+[submodule "coreboot"]
+	path = coreboot
+	url = http://review.coreboot.org/p/coreboot

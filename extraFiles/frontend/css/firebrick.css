@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'alienleague';
+    src: url('alienleague.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: 'rail';
+    src: url('Raleway-Regular.otf');
+}
+
+h1,h2,h3 {font-family:rail;}
+
+hr{
+ border-color: #eaeaea;
+}
+
+h3{padding-top:15px;}
+
+section.grid-highlight{border-bottom:1px #ebebeb dashed  ; border-width:5px;}
