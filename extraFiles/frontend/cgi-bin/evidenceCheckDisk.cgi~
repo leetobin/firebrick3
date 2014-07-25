@@ -2,4 +2,5 @@
 echo Content-type: text/html
 echo ""
 
-poweroff
+source defs.cgi
+$FABRIC/$DEF_IQN/tpgt_1/enable

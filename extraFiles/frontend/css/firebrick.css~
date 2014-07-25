@@ -11,8 +11,7 @@
 body{
 	font-family:"Arial Black", Gadget, sans-serif;
 	background: none repeat scroll 0% 0% #F4F4F4;
-	padding-left:15px;
-
+padding-left:15px;
 }
 
 h1,h2,h3{font-family:rail;font-weight:normal;}

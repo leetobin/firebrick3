@@ -14,6 +14,7 @@ then
 	# Enable the virtual storage object and call bd_claim()
 	echo 1 > $TARGET/iblock_0/lvm_test0/enable
 
+
 	#create the network portal on $DEF_IQN/tpgt_1
 	mkdir -p "$FABRIC/$DEF_IQN/tpgt_1/np/192.168.0.1:3260"
 	# Create LUN 0 on $DEF_IQN/tpgt_1

@@ -7,150 +7,36 @@
 
 if ls -la /sys/block | grep ata. | grep host0 | grep -qo sd.
 then
+	#find the disk
 	export evidenceDisk=$(ls -la /sys/block | grep ata. | grep host0 | grep -o sd. | tail -1)
-	#Export the evidence drive
-	sh evidenceExport.sh
-	#If there is storage then bring up the imaging menu, else just export over FW
-	if [[ ${#storageDevice} -gt 2 ]] ; then
 	
-		#if RAID not assembled, RAID assemble!
-		if [[ $storageDevice == "/dev/md0" ]] ; then
-			mdadm --assemble /dev/md0 /dev/$storageDisk1 /dev/$storageDisk2
-			fdisk -l
-			sleep 3
-			fdisk -l
-		fi
+	#Export the evidence drive
+	export CONFIGFS=/sys/kernel/config
+	export TARGET=/sys/kernel/config/target/core
+	export FABRIC=/sys/kernel/config/target/iscsi
 
-		#mount the storage
-		if [[ $storageDevice == "/dev/md0" ]] ; then
-			#if RAID
-			echo mounting "/dev/md0p1" on /firestor
-			mount /dev/md0p1  /firestor
-		else
-			#mount single disk
-			echo mounting "${storageDevice}1" on /firestor
-			mount "${storageDevice}1"  /firestor
-		fi
-		
-		sleep 1
-		
-		
-		trap 'echo "ignoring"' INT
+	#create a IBLOCK HBA and virtual storage object
+	mkdir -p $TARGET/iblock_0/lvm_test0
+	# Tell the virtual storage object what struct block_device we want
+	echo "udev_path=/dev/$evidenceDisk" > $TARGET/iblock_0/lvm_test0/control
+	echo "readonly=1" > $TARGET/iblock_0/lvm_test0/control
+	# Enable the virtual storage object and call bd_claim()
+	echo 1 > $TARGET/iblock_0/lvm_test0/enable
 
-		lcd c
+	DEF_IQN="iqn.2003-01.org.linux-iscsi.target.i686:sn.e475ed6fcdd0"
 
-		#check there is enough space on storage for evidence
-		#check that there is enough internal storage for image
-		#storage drive
-		storageSize=$(df | grep firestor | awk '{print$4}')
-		let storageSize=$storageSize*1000
-		#now the evidence drive
-		evidenceSize=$(fdisk /dev/$evidenceDisk -l | head -2 | tail -1 | awk '{print$5}')
-		#echo "Storage size:$storageSize Evidence size:$evidenceSize" #debug output
-		#if storagesize > evidencesize
-		if [ $storageSize -gt $evidenceSize ]
-		then
-		
-			while [ 1 == 1 ]
-			do
-				lcd g 0 0 ; lcd p "1. Image & verify"
-				lcd g 0 1 ; lcd p "2. Power off"
-				lcd g 0 3 ; lcd p "Free:"
-				df -h | grep firestor | tr -s " " | cut -d ' ' -f 4 | tr -d $"\n" | lcd j 6 3
+	#create the network portal on $DEF_IQN/tpgt_1
+	mkdir -p "$FABRIC/$DEF_IQN/tpgt_1/np/192.168.0.1:3260"
+	# Create LUN 0 on $DEF_IQN/tpgt_1
+	mkdir -p "$FABRIC/$DEF_IQN/tpgt_1/lun/lun_0"
+	# Create the iSCSI Target Port Mapping for $DEF_IN/tpgt_1 LUN 0
+	# to lvm_test0 and give it the port symbolic name of lio_west_port
+	ln -s $TARGET/iblock_0/lvm_test0 "$FABRIC/$DEF_IQN/tpgt_1/lun/lun_0/lio_west_port"
 
-				stty raw; read -n 1 key ; stty -raw
-				case $key in
-				1)
-					evidenceID=''
-					#check that the ID is unique on storage disk
-					while [ "$evidenceID" == "" ]
-					do
-					lcd c
-					lcd g 0 1 ; lcd p "Enter Evidence ID:"
-                    lcd g 0 2
-
-					evidenceID=$(lcd i | tr -d "?*/\\><|")
-
-
-					destDir="/firestor/$evidenceID"      
-					if test -d destDir 
-					then
-					  lcd c
-					  lcd g 0 1 ; lcd p "Evidence ID Exists!"
-					  sleep 2
-					  evidenceID=''
-					fi
-					done
-
-					mkdir $destDir
-
-					imghash=$(./evidenceImage.sh /dev/$evidenceDisk $destDir $evidenceID)
-					exitCode=$?
-
-					if [ $exitCode != 0 ]
-					then
-					lcd c 
-					lcd g 0 1 ; lcd p "Imaging Failed"
-					lcd g 0 2 ; lcd p "Deleting image"
-					rm -r $destDir/*
-					rmdir $destDir
-					else
-					./evidenceVerify.sh $destDir $evidenceID $imghash
-					exitCode=$?
-					if [ $exitCode != 0 ]
-					then
-					   lcd c 
-					   lcd g 0 1 ; lcd p "Verification falied"
-					   lcd g 0 2 ; lcd p "Deleting image"
-					   rm -r $destDir/*
-					   rmdir $destDir
-					else
-					   lcd c
-					   lcd g 0 1 ; lcd p "Verification Success"
-					   sleep 1
-					fi    
-					fi
-
-					lcd c
-					;;
-
-				2)
-					poweroff
-					sleep 10
-					;;
-				s)
-					lcd c
-					exit
-					;;
-				*)
-					;;
-				esac
-			done
-		else
-			lcd c
-			lcd g 0 0 ; lcd p "Insufficient"
-			lcd g 0 1 ; lcd p "storage available"
-			lcd g 0 2 ; lcd p "Press any key"
-			lcd g 0 3 ; lcd p "to poweroff..."
-			stty raw; read -n 1 key; stty -raw
-			lcd c
-			poweroff
-			sleep 10
-		fi
-	else
-		lcd c
-		lcd g 0 0 ; lcd p "Evidence exported"
-		lcd g 0 1 ; lcd p "Press any key"
-		lcd g 0 2 ; lcd p "to poweroff..."
-		stty raw; read -n 1 key; stty -raw
-		lcd c
-		poweroff
-		sleep 10
-	fi
-
+	# Allow iSCSI Initiators to login to $DEF_IQN/tpgt_1
+	#warning Currently uses generate_node_acls=1,cache_dynamic_acls=1,demo_mode_lun_access=1
+	echo 1 > $FABRIC/$DEF_IQN/tpgt_1/enable
+	echo "done"
 else
-	lcd c
-	lcd g 0 0 ; lcd p "  Evidence drive"
-	lcd g 0 1 ; lcd p "  not found!!"
-	sleep 2
+	echo "nodrv"
 fi
