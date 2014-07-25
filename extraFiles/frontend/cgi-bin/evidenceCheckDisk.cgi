@@ -5,9 +5,9 @@ echo ""
 source defs.cgi
 
 
-if [ $FABRIC/$DEF_IQN/tpgt_1/enable == 1 ] ; then 
-echo "exported"
+if grep -q "1" $FABRIC/$DEF_IQN/tpgt_1/enable  ; then 
+echo "exported in $FABRIC/$DEF_IQN/tpgt_1/enable"
 else
-echo "notexported"
+echo "notexported in $FABRIC/$DEF_IQN/tpgt_1/enable"
 fi
 

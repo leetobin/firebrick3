@@ -84,8 +84,8 @@ Zepto(function($){
 			type: 'GET',
 			url: 'cgi-bin/evidenceExport.cgi',
 			success: function(data){   
-				if(data.substring(0,4) != "done"){
-					console.log(data);
+				console.log(data);
+				if(data.substring(0,4) != "done"){					
 					$('#exportiscsiNote').html(data).show();
 					$('#exportiscsi').prop("checked",false);
 				}
@@ -101,8 +101,8 @@ Zepto(function($){
 		type: 'GET',
 		url: 'cgi-bin/evidenceCheckDisk.cgi',
 		success: function(data){   
-			if(data.substring(0,3) != "exp"){
-				console.log(data);
+			console.log(data);
+			if(data.substring(0,3) == "exp"){
 				$('#exportiscsi').prop("checked",true);
 			}
 			else $('#exportiscsi').prop("checked",false);
