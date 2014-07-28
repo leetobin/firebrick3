@@ -4,14 +4,14 @@ firebrick3
 Software for the open source hardware write-blocker/imager.
 
 FIREBrick features:
-*Autonomous disk imaging at speeds of up to 5Gb per minute (disk dependent)
-*iSCSI write blocker function
-*Stand-alone version supports storage mirroring and encryption
-*Web frontend to control
-*Portable – fits in a small HTPC case, including display
-*Free, open source firmware
-*Can be fully customized to the needs of specific departments
-*Automatic RAID storage detection
+* Autonomous disk imaging at speeds of up to 5Gb per minute (disk dependent)
+* iSCSI write blocker function
+* Stand-alone version supports storage mirroring and encryption
+* Web frontend to control
+* Portable – fits in a small HTPC case, including display
+* Free, open source firmware
+* Can be fully customized to the needs of specific departments
+* Automatic RAID storage detection
 
 To build a FIREBrick you need:
 
