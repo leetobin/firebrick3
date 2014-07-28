@@ -19,9 +19,9 @@ To build a FIREBrick you need:
 * >= 1Gb DDR3 Desktop RAM (1333 or 1066)
 
 
-This version of the FIREBrick runs a webserver, providing a web frontend. The user connects to the FIREBrick via an ethernet cable, the system provides an IP address via DHCP (192.168.0.x). You connect the FIREBrick via a web browser (192.168.0.1).
+This version of the FIREBrick runs a webserver, providing a web frontend. The user connects to the FIREBrick via an ethernet cable, the system provides an IP address via DHCP (192.168.0.x). Frontend accessible via a web browser (192.168.0.1).
 
-This build needs a little more work, currently only has basic functionality.
+This build needs a little more work, currently has basic working functionality.
 
 ###### For UCD MSc students:
 [Jira/Confluence](https://firebrick.atlassian.net/wiki/display/SC/Build+notes)
