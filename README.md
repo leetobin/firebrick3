@@ -3,7 +3,7 @@
 
 Software for the open source hardware write-blocker/imager.
 
-## FIREBrick features:
+##### FIREBrick features:
 * Autonomous disk imaging at speeds of up to 5Gb per minute (disk dependent)
 * iSCSI write blocker function
 * Stand-alone version supports storage mirroring and encryption
@@ -23,5 +23,5 @@ This version of the FIREBrick runs a webserver, providing a web frontend. The us
 
 This build needs a little more work, currently only has basic functionality.
 
-For UCD MSc students:
-https://firebrick.atlassian.net/wiki/display/SC/Build+notes
+###### For UCD MSc students:
+[Jira/Confluence](https://firebrick.atlassian.net/wiki/display/SC/Build+notes)
