@@ -1,9 +1,9 @@
-firebrick3
+# firebrick3
 ==========
 
 Software for the open source hardware write-blocker/imager.
 
-FIREBrick features:
+## FIREBrick features:
 * Autonomous disk imaging at speeds of up to 5Gb per minute (disk dependent)
 * iSCSI write blocker function
 * Stand-alone version supports storage mirroring and encryption
@@ -15,8 +15,8 @@ FIREBrick features:
 
 To build a FIREBrick you need:
 
-*ASRock E350M1 Motherboard
-*>= 1Gb DDR3 Desktop RAM (1333 or 1066)
+* ASRock E350M1 Motherboard
+* >= 1Gb DDR3 Desktop RAM (1333 or 1066)
 
 
 This version of the FIREBrick runs a webserver, providing a web frontend. The user connects to the FIREBrick via an ethernet cable, the system provides an IP address via DHCP (192.168.0.x). You connect the FIREBrick via a web browser (192.168.0.1).
