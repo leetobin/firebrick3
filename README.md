@@ -1,4 +1,4 @@
-# firebrick3
+# FIREBrick 3
 ==========
 
 Software for the open source hardware write-blocker/imager.
