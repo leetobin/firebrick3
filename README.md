@@ -35,10 +35,10 @@ This build needs a little more work, currently has basic working functionality; 
 * Create and boot a VM using the Ubuntu Server ISO. (~2Gb RAM and >25Gb HD)
 * In the new VM install git, build-essential, unzip on the VM (sudo apt-get install git build-essential unzip)
 * Clone this repo (git clone --recursive https://github.com/leetobin/firebrick3)
-* Run the make script (/firebrick3/extraFiles/start.sh) (wait a bit)
-* You will now have a bzImage (/firebrick3/buildroot/output/images)
+* Run the make script (./firebrick3/extraFiles/start.sh) (wait a bit)
+* You will now have a bzImage (./firebrick3/buildroot/output/images)
 * Create a bootable USB (using sys-linux, see instructions below)
-* OR ... emulate using the bzImage (qemu-system-x86_64 -kernel /home/lee/buildroot/output/images/bzImage -curses)
+* OR ... emulate using the bzImage (qemu-system-x86_64 -kernel ./firebrick3/buildroot/output/images/bzImage -curses)
  
 
 # Create a bootable USB key
