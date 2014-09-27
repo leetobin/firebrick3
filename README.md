@@ -64,5 +64,5 @@ Boot into the FIREBrick OS.
 
 # Basic design guidelines
 
-* Keep the UI consistent, add to the current frontend. Don't create a new design. We can worry about this when all the projects are nearing completion. Seriously, don't go spending time on UI design! It will most likely be scrapped/not used.
+* Keep the UI consistent, add to the current frontend. Don't create a new design. We can worry about this when all the projects are nearing completion. Seriously, don't go spending time on UI design! It will most likely be scrapped/not used. Bottom line, get the functionality working using the current style.
 * Once you have built the system, have a play around with buildroot. Go into ./firebrick3/buildroot and type (make menuconfig)
