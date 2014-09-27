@@ -33,7 +33,36 @@ This build needs a little more work, currently has basic working functionality; 
 * Download Ubuntu Server latest. http://www.ubuntu.com/download/server
 * Download and install VirtualBox latest. https://www.virtualbox.org/
 * Create and boot a VM using the Ubuntu Server ISO. (~2Gb RAM and >25Gb HD)
-* Install git, build-essential, unzip on the VM (sudo apt-get install git build-essential unzip)
-* /firebrick3/extraFiles/start.sh (wait a bit)
-* You will now have a bzImage /firebrick3/buildroot/output/images
-* Create a bootable USB (using sys-linux or similar and use the bzImage)
+* In the new VM install git, build-essential, unzip on the VM (sudo apt-get install git build-essential unzip)
+* Clone this repo (git clone --recursive https://github.com/leetobin/firebrick3)
+* Run the make script (/firebrick3/extraFiles/start.sh) (wait a bit)
+* You will now have a bzImage (/firebrick3/buildroot/output/images)
+* Create a bootable USB (using sys-linux, see instructions below)
+* OR ... emulate using the bzImage (qemu-system-x86_64 -kernel /home/lee/buildroot/output/images/bzImage -curses)
+ 
+
+# Create a bootable USB key
+
+Syslinux works well for this:
+http://www.syslinux.org/wiki/index.php/The_Syslinux_Project
+
+### From windows:
+
+	>syslinux64.exe --mbr --active --directory / --install [name of drive such as "f:"]
+
+Install syslinux to your key and create a simple config file like this one:
+
+### SYSLINUX.CFG:
+		
+	default firebrick
+	label firebrick
+		linux /bzImage
+
+Copy the bzImage (created in the build process above) file to your USB key.
+
+Boot into the FIREBrick OS.
+
+# Basic design guidelines
+
+* Keep the UI consistent, add to the current frontend. Don't create a new design. We can worry about this when all the projects are nearing completion. Seriously, don't go spending time on UI design! It will most likely be scrapped/not used.
+* Once you have built the system, have a play around with buildroot. Go into ./firebrick3/buildroot and type (make menuconfig)
