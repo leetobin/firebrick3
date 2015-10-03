@@ -32,16 +32,18 @@ An experimental UI has been developed for the FIREBrick called MAUI. It's based 
 
 # Getting Started:
 
-* Download Ubuntu Server latest. http://www.ubuntu.com/download/server
-* Download and install VirtualBox latest. https://www.virtualbox.org/
-* Create and boot a VM using the Ubuntu Server ISO. (~2Gb RAM and >25Gb HD)
-* In the new VM install git, build-essential, unzip on the VM (sudo apt-get install git build-essential unzip)
 * Clone this repo (git clone --recursive https://github.com/leetobin/firebrick3)
 * Run the make script (./firebrick3/extraFiles/start.sh) (wait a bit)
 * You will now have a bzImage (./firebrick3/buildroot/output/images)
 * Create a bootable USB (using sys-linux, see instructions below)
 * OR ... emulate using the bzImage (qemu-system-x86_64 -kernel ./firebrick3/buildroot/output/images/bzImage -curses)
  
+# If you want to create a virtual dev environment just do the above with a new dev VM:
+
+* Download Ubuntu Server latest. http://www.ubuntu.com/download/server
+* Download and install VirtualBox latest. https://www.virtualbox.org/
+* Create and boot a VM using the Ubuntu Server ISO. (~2Gb RAM and >25Gb HD)
+* In the new VM install git, build-essential, unzip on the VM (sudo apt-get install git build-essential unzip)
 
 # Create a bootable USB key
 
