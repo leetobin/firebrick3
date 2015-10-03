@@ -24,7 +24,7 @@ This version of the FIREBrick runs a webserver, providing a web frontend. The us
 
 This build needs a little more work, currently has basic working functionality; A disk can be exported over iSCSI.
 
-An experimental UI has been developed for the FIREBrick called MAUI. It's based on principles from Morphological Analysis. A demo is available here: bit.ly/mamaui
+An experimental UI has been developed for the FIREBrick called MAUI. It's based on principles from Morphological Analysis. A demo is available here: [MAUI](bit.ly/mamaui)
 
 ###### For UCD MSc students:
 [Jira/Confluence](https://firebrick.atlassian.net/wiki/display/SC/Build+notes)
